@@ -1,15 +1,8 @@
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
+  margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: black;
   color: white;
-  padding: 2rem;
+  background: black;
   overflow-x: hidden;
 }
 
@@ -17,50 +10,57 @@ body::before {
   content: '';
   position: fixed;
   top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: url('https://raw.githubusercontent.com/JulianOspinaTech/stars-background/main/stars.png') repeat;
+  width: 100vw;
+  height: 100vh;
+  background: url('https://raw.githubusercontent.com/matteobruni/tsparticles/main/demo/images/stars.jpg') center/cover no-repeat;
   z-index: -1;
+  opacity: 0.2;
   animation: stars 100s linear infinite;
-  opacity: 0.4;
 }
 
 @keyframes stars {
   0% { background-position: 0 0; }
-  100% { background-position: -10000px 5000px; }
+  100% { background-position: 10000px 10000px; }
 }
 
-header h1 {
+header {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+h1 {
   font-size: 3rem;
-  color: #00fff0;
-  text-shadow: 0 0 15px #00fff0;
-}
-
-header p {
-  font-size: 1.2rem;
-  color: #ccc;
-  margin-bottom: 2rem;
+  color: #00ffd5;
+  text-shadow: 0 0 8px #00ffd5, 0 0 16px #00ffd5;
+  transition: text-shadow 0.3s ease;
 }
 
 section {
-  margin-bottom: 2.5rem;
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
 }
 
-section h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: #00ffe1;
-  text-shadow: 0 0 10px #00ffe1;
+h2 {
+  border-bottom: 1px solid #00ffd5;
+  padding-bottom: 0.5rem;
+  margin-top: 2rem;
 }
 
-section p {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #eee;
+.discord {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 1.2rem;
 }
 
 a {
-  color: #00ffe1;
-  text-decoration: underline;
+  color: #00ffd5;
+}
+
+.download-section {
+  text-align: center;
+  margin-top: 3rem;
 }
 
 #downloadBtn {
@@ -74,7 +74,6 @@ a {
   cursor: pointer;
   box-shadow: 0 0 10px #00ffd5;
   transition: 0.3s ease;
-  margin-top: 1rem;
 }
 
 #downloadBtn:hover {
@@ -87,6 +86,6 @@ a {
 }
 
 #statusMsg {
-  margin-top: 10px;
-  color: #00ffe1;
+  margin-top: 1rem;
+  font-style: italic;
 }
