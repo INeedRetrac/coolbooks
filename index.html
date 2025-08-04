@@ -3,67 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CSGO Injector</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      color: white;
-      background: black;
-      overflow-x: hidden;
-    }
-
-    /* Stars background */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: url('https://raw.githubusercontent.com/matteobruni/tsparticles/main/demo/images/stars.jpg') center/cover no-repeat;
-      z-index: -1;
-      opacity: 0.2;
-      animation: stars 100s linear infinite;
-    }
-
-    @keyframes stars {
-      0% { background-position: 0 0; }
-      100% { background-position: 10000px 10000px; }
-    }
-
-    header {
-      text-align: center;
-      padding: 3rem 1rem;
-      background: rgba(0, 0, 0, 0.5);
-    }
-
-    h1 {
-      font-size: 3rem;
-      color: #00ffd5;
-    }
-
-    section {
-      padding: 2rem;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    h2 {
-      border-bottom: 1px solid #00ffd5;
-      padding-bottom: 0.5rem;
-      margin-top: 2rem;
-    }
-
-    .discord {
-      text-align: center;
-      margin-top: 3rem;
-      font-size: 1.2rem;
-    }
-
-    a {
-      color: #00ffd5;
-    }
-  </style>
+  <title>CS:GO Injector</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
@@ -84,7 +25,7 @@
   <section id="faq">
     <h2>FAQ</h2>
     <p><strong>Q: Will this get me banned?</strong><br>A: No injector is 100% safe. Ours is undetected at the moment, but using cheats always carries a risk.</p>
-    <p><strong>Q: How do I use it?</strong><br>A: Run the injector as admin, rename your dll cheat to csgo.dll and if your cheat has steam module name the steam module dll to steam.dll. and run steam and csgo and done! BUT KEEP IT IN THE SAME FOLDER AS THE LOADER OR ELSE IT WILL NOT WORK</p>
+    <p><strong>Q: How do I use it?</strong><br>A: Run the injector as admin, select `csgo.exe`, and inject your DLL.</p>
   </section>
 
   <section class="discord">
@@ -92,5 +33,13 @@
     <p>Join the Discord server: <a href="https://discord.gg/YOURSERVER" target="_blank">discord.gg/xGxRWssHTG</a></p>
     <p>Or message me directly: <strong>@i.am_toogood4u</strong></p>
   </section>
+
+  <section class="download-section">
+    <h2>Download</h2>
+    <button id="downloadBtn">Download Injector</button>
+    <p id="statusMsg"></p>
+  </section>
+
+  <script src="script.js"></script>
 </body>
 </html>
