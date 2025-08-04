@@ -12,7 +12,7 @@ document.getElementById("downloadBtn").addEventListener("click", function () {
 
       // Create hidden download link
       const link = document.createElement("a");
-      link.href = "injector.zip"; // Local file in the repo
+      link.href = "injector.zip"; // Your zip file name here
       link.download = "injector.zip";
       document.body.appendChild(link);
       link.click();
