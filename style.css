@@ -32,8 +32,6 @@ header {
 h1 {
   font-size: 3rem;
   color: #00ffd5;
-  text-shadow: 0 0 8px #00ffd5, 0 0 16px #00ffd5;
-  transition: text-shadow 0.3s ease;
 }
 
 section {
@@ -72,17 +70,6 @@ a {
   font-weight: bold;
   border-radius: 10px;
   cursor: pointer;
-  box-shadow: 0 0 10px #00ffd5;
-  transition: 0.3s ease;
-}
-
-#downloadBtn:hover {
-  background: #00fff2;
-  color: black;
-  box-shadow:
-    0 0 10px #00fff2,
-    0 0 20px #00fff2,
-    0 0 40px #00fff2;
 }
 
 #statusMsg {
