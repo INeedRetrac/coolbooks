@@ -1,23 +1,25 @@
-
 document.getElementById("downloadBtn").addEventListener("click", function () {
   const status = document.getElementById("statusMsg");
+
   status.textContent = "Checking for updates...";
-
+  
+  // Simulate checking time
   setTimeout(() => {
-    status.textContent = "Injector is up to date. Preparing download...";
-
+    status.textContent = "Update found. Preparing download...";
+    
     setTimeout(() => {
-      const blob = new Blob(["This would be your injector binary."], { type: "application/zip" });
-      const url = URL.createObjectURL(blob);
+      status.textContent = "Downloading latest injector...";
 
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "CoolInjector.zip";
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
+      // Create hidden download link
+      const link = document.createElement("a");
+      link.href = "injector.zip"; // Your zip file name here
+      link.download = "injector.zip";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
 
       status.textContent = "Download started!";
     }, 1500);
-  }, 1500);
+
+  }, 1200);
 });
