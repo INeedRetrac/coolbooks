@@ -21,16 +21,23 @@ function showForm(isRegister) {
   const form = document.createElement("form");
   form.innerHTML = `
     <h2>${formTitle}</h2>
-    <label>Username: <input type="text" id="username" required></label><br><br>
-    <label>Password: <input type="password" id="password" required></label><br><br>
+
+    <label for="username">Username:</label>
+    <input type="text" id="username" autocomplete="off" required />
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" autocomplete="off" required />
+
     <button type="submit">${btnText}</button>
-    <p id="errorMsg" style="color: #ff6666; margin-top: 10px;"></p>
+    <p id="errorMsg"></p>
   `;
 
   form.addEventListener("submit", function(e) {
     e.preventDefault();
     const username = form.querySelector("#username").value.trim();
     const password = form.querySelector("#password").value.trim();
+
+    const errorMsg = form.querySelector("#errorMsg");
 
     if (isRegister) {
       // Save credentials
@@ -49,8 +56,6 @@ function showForm(isRegister) {
         showForm(true);
         return;
       }
-
-      const errorMsg = form.querySelector("#errorMsg");
 
       if (username !== storedUser && password !== storedPass) {
         errorMsg.textContent = "Wrong password and user";
