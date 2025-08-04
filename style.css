@@ -1,125 +1,91 @@
-/* Body black background and text */
 body {
   margin: 0;
-  background-color: #000000;
-  color: #00ffd5;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  user-select: none;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  background: black;
+  overflow-x: hidden;
 }
 
-/* Auth form container */
-#auth {
+body::before {
+  content: '';
   position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 340px;
-  padding: 2rem 3rem;
-  background: #111111;
-  border-radius: 15px;
-  box-shadow: 0 0 20px #00ffd5aa;
-  color: #00ffd5;
-  transform: translate(-50%, -50%);
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('https://raw.githubusercontent.com/matteobruni/tsparticles/main/demo/images/stars.jpg') center/cover no-repeat;
+  z-index: -1;
+  opacity: 0.2;
+  animation: stars 100s linear infinite;
+}
+
+@keyframes stars {
+  0% { background-position: 0 0; }
+  100% { background-position: 10000px 10000px; }
+}
+
+header {
   text-align: center;
+  padding: 3rem 1rem;
+  background: rgba(0, 0, 0, 0.5);
 }
 
-/* Form Title */
-#auth h2 {
-  font-weight: 900;
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  text-shadow: 0 0 10px #00ffd5;
+h1 {
+  font-size: 3rem;
+  color: #00ffd5;
+  text-shadow: 0 0 8px #00ffd5, 0 0 16px #00ffd5;
+  transition: text-shadow 0.3s ease;
 }
 
-/* Inputs */
-#auth input[type="text"],
-#auth input[type="password"] {
-  width: 100%;
-  padding: 0.6rem 0.8rem;
-  margin-bottom: 1.2rem;
-  border: none;
-  border-radius: 10px;
-  font-size: 1rem;
-  outline: none;
-  color: black;
+section {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
 }
 
-/* Input focus style */
-#auth input[type="text"]:focus,
-#auth input[type="password"]:focus {
-  box-shadow: 0 0 8px #00ffd5;
-}
-
-/* Buttons */
-#auth button {
-  background: #00ffd5;
-  border: none;
-  padding: 0.7rem 1rem;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: black;
-  cursor: pointer;
-  width: 100%;
-  box-shadow: 0 0 15px #00ffd5;
-  transition: background 0.3s ease;
-  margin-bottom: 0.8rem;
-}
-
-#auth button:hover {
-  background: #00fff2;
-  box-shadow:
-    0 0 15px #00fff2,
-    0 0 25px #00fff2,
-    0 0 45px #00fff2;
-}
-
-/* Links inside form */
-#auth .form-switch {
-  color: #00ffd5cc;
-  cursor: pointer;
-  user-select: text;
-  margin-top: 1rem;
-  display: inline-block;
-  text-decoration: underline;
-}
-
-/* Error message styling */
-#errorMsg {
-  margin-top: 0.8rem;
-  font-size: 0.95rem;
-  color: #ff6666;
-  min-height: 1.2rem;
-}
-
-/* Panic button styling */
-#panicBtn {
-  background: #ff4444;
-  margin-top: 0.5rem;
-}
-
-#panicBtn:hover {
-  background: #ff6666;
-}
-
-/* Main content styling */
-#mainContent {
-  max-width: 720px;
-  margin: 3rem auto;
-  padding: 0 1rem;
-  user-select: text;
-}
-
-#mainContent header h1 {
-  font-size: 2.8rem;
-  margin-bottom: 0;
-}
-
-#mainContent section {
+h2 {
+  border-bottom: 1px solid #00ffd5;
+  padding-bottom: 0.5rem;
   margin-top: 2rem;
 }
 
-#mainContent section h2 {
+.discord {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 1.2rem;
+}
+
+a {
   color: #00ffd5;
-  border-bottom: 1px solid #00ffd5;
-  padding-bottom: 0.2rem;
+}
+
+.download-section {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+#downloadBtn {
+  padding: 1rem 2rem;
+  background: #00ffd5;
+  border: none;
+  color: black;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #00ffd5;
+  transition: 0.3s ease;
+}
+
+#downloadBtn:hover {
+  background: #00fff2;
+  color: black;
+  box-shadow:
+    0 0 10px #00fff2,
+    0 0 20px #00fff2,
+    0 0 40px #00fff2;
+}
+
+#statusMsg {
+  margin-top: 1rem;
+  font-style: italic;
 }
