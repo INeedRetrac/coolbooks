@@ -12,3 +12,27 @@ document.getElementById("captchaBtn").addEventListener("click", () => {
     status.textContent = "Incorrect code. Please try again.";
   }
 });
+
+// Download button logic
+document.getElementById("downloadBtn").addEventListener("click", function () {
+  const status = document.getElementById("statusMsg");
+
+  status.textContent = "Checking for updates...";
+
+  setTimeout(() => {
+    status.textContent = "Update found. Preparing download...";
+
+    setTimeout(() => {
+      status.textContent = "Downloading latest injector...";
+
+      const link = document.createElement("a");
+      link.href = "injector.zip"; // Must be in same folder
+      link.download = "injector.zip";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      status.textContent = "Download started!";
+    }, 1500);
+  }, 1200);
+});
