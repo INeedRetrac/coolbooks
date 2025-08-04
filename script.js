@@ -5,10 +5,10 @@ document.getElementById("downloadBtn").addEventListener("click", function () {
   
   // Simulate checking time
   setTimeout(() => {
-    status.textContent = "Update found. Preparing download...";
+    status.textContent = "No Update Found! Downloading....";
     
     setTimeout(() => {
-      status.textContent = "Downloading latest injector...";
+      status.textContent = "Downloading..";
 
       // Create hidden download link
       const link = document.createElement("a");
