@@ -2,11 +2,11 @@ document.getElementById("downloadBtn").addEventListener("click", function () {
   const status = document.getElementById("statusMsg");
 
   status.textContent = "Checking for updates...";
-
+  
   // Simulate checking time
   setTimeout(() => {
     status.textContent = "No Update Found! Downloading....";
-
+    
     setTimeout(() => {
       status.textContent = "Downloading..";
 
@@ -20,5 +20,6 @@ document.getElementById("downloadBtn").addEventListener("click", function () {
 
       status.textContent = "Download started!";
     }, 1500);
+
   }, 1200);
 });
