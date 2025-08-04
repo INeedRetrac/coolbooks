@@ -5,7 +5,6 @@ body {
   background: black;
   overflow-x: hidden;
 }
-
 .stars {
   content: '';
   position: fixed;
@@ -17,53 +16,44 @@ body {
   opacity: 0.2;
   animation: stars 100s linear infinite;
 }
-
 @keyframes stars {
   0% { background-position: 0 0; }
   100% { background-position: 10000px 10000px; }
 }
-
 header {
   text-align: center;
   padding: 3rem 1rem;
   background: rgba(0, 0, 0, 0.5);
 }
-
 h1 {
   font-size: 3rem;
   color: #00ffd5;
   text-shadow: 0 0 8px #00ffd5, 0 0 16px #00ffd5;
   transition: text-shadow 0.3s ease;
 }
-
 section {
   padding: 2rem;
   max-width: 800px;
   margin: auto;
 }
-
 h2 {
   border-bottom: 1px solid #00ffd5;
   padding-bottom: 0.5rem;
   margin-top: 2rem;
 }
-
 .discord {
   text-align: center;
   margin-top: 3rem;
   font-size: 1.2rem;
 }
-
 a {
   color: #00ffd5;
   text-decoration: none;
 }
-
 .download-section {
   text-align: center;
   margin-top: 3rem;
 }
-
 #downloadBtn {
   padding: 1rem 2rem;
   background: #00ffd5;
@@ -76,22 +66,15 @@ a {
   box-shadow: 0 0 10px #00ffd5;
   transition: 0.3s ease;
 }
-
 #downloadBtn:hover {
   background: #00fff2;
   color: black;
-  box-shadow:
-    0 0 10px #00fff2,
-    0 0 20px #00fff2,
-    0 0 40px #00fff2;
+  box-shadow: 0 0 10px #00fff2, 0 0 20px #00fff2, 0 0 40px #00fff2;
 }
-
 #statusMsg {
   margin-top: 1rem;
   font-style: italic;
 }
-
-/* Lock screen styling */
 #lockScreen {
   position: fixed;
   top: 0; left: 0;
@@ -104,7 +87,6 @@ a {
   justify-content: center;
   z-index: 9999;
 }
-
 .lock-box {
   text-align: center;
   background: rgba(0, 0, 0, 0.7);
@@ -112,7 +94,6 @@ a {
   border-radius: 1rem;
   box-shadow: 0 0 20px #00ffd5;
 }
-
 .lock-box input {
   padding: 0.5rem;
   font-size: 1rem;
@@ -124,14 +105,12 @@ a {
   background: #111;
   color: white;
 }
-
 #captchaWord {
   font-weight: bold;
   font-size: 1.5rem;
   color: #00ffd5;
   margin: 1rem 0;
 }
-
 #captchaBtn {
   margin-top: 1rem;
   padding: 0.6rem 1.2rem;
@@ -141,7 +120,6 @@ a {
   border-radius: 8px;
   cursor: pointer;
 }
-
 #captchaStatus {
   margin-top: 1rem;
   color: red;

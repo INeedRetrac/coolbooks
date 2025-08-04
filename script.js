@@ -26,7 +26,7 @@ document.getElementById("downloadBtn").addEventListener("click", function () {
       status.textContent = "Downloading latest injector...";
 
       const link = document.createElement("a");
-      link.href = "injector.zip"; // Must be in same folder
+      link.href = "injector.zip"; // Replace with real file
       link.download = "injector.zip";
       document.body.appendChild(link);
       link.click();
