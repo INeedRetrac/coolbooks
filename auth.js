@@ -1,99 +1,106 @@
 const authDiv = document.getElementById("auth");
 const mainContent = document.getElementById("mainContent");
 
-function createRegisterForm() {
-  authDiv.style.display = "block";
-  mainContent.style.display = "none";
+let mode = "login"; // or 'register'
 
+function renderForm() {
   authDiv.innerHTML = `
-    <h2>Register</h2>
-    <label for="regUser">Username:</label>
-    <input type="text" id="regUser" placeholder="Enter username" autocomplete="off" />
-    <label for="regPass">Password:</label>
-    <input type="password" id="regPass" placeholder="Enter password" autocomplete="off" />
+    <h2>${mode === "login" ? "Login" : "Register"}</h2>
+    <input type="text" id="username" placeholder="Username" autocomplete="username" />
+    <input type="password" id="password" placeholder="Password" autocomplete="${mode === "login" ? "current-password" : "new-password"}" />
+    <button id="submitBtn">${mode === "login" ? "Login" : "Register"}</button>
     <div id="errorMsg"></div>
-    <button id="registerBtn">Register</button>
+    <div>
+      <span class="form-switch">${mode === "login" ? "No account? Register here" : "Already have an account? Login here"}</span>
+    </div>
+    ${mode === "login" ? `<button id="panicBtn">Panic Account Delete</button>` : ""}
   `;
 
-  document.getElementById("registerBtn").onclick = () => {
-    const username = document.getElementById("regUser").value.trim();
-    const password = document.getElementById("regPass").value;
+  document.getElementById("submitBtn").onclick = handleSubmit;
+  document.querySelector(".form-switch").onclick = toggleMode;
 
-    if (username.length < 3) {
-      showError("Username must be at least 3 characters.");
-      return;
-    }
-    if (password.length < 4) {
-      showError("Password must be at least 4 characters.");
-      return;
-    }
-
-    localStorage.setItem("username", username);
-    localStorage.setItem("password", password);
-
-    showLoginForm();
-  };
-}
-
-function showLoginForm() {
-  authDiv.style.display = "block";
-  mainContent.style.display = "none";
-
-  authDiv.innerHTML = `
-    <h2>Login</h2>
-    <input type="text" id="loginUser" placeholder="Username" autocomplete="off" />
-    <input type="password" id="loginPass" placeholder="Password" autocomplete="off" />
-    <div id="errorMsg"></div>
-    <button id="loginBtn">Login</button>
-    <button id="panicBtn" style="margin-top: 10px; background: #ff4d4d; color: white;">Panic Account Delete</button>
-  `;
-
-  document.getElementById("loginBtn").onclick = () => {
-    const user = document.getElementById("loginUser").value.trim();
-    const pass = document.getElementById("loginPass").value;
-
-    const savedUser = localStorage.getItem("username");
-    const savedPass = localStorage.getItem("password");
-
-    if (user === savedUser && pass === savedPass) {
-      authDiv.style.display = "none";
-      mainContent.style.display = "block";
-      clearError();
-    } else {
-      showError("Invalid username or password.");
-    }
-  };
-
-  document.getElementById("panicBtn").onclick = () => {
-    localStorage.removeItem("username");
-    localStorage.removeItem("password");
-    createRegisterForm();
-  };
-}
-
-function showError(msg) {
-  const err = document.getElementById("errorMsg");
-  if (err) {
-    err.textContent = msg;
+  if (mode === "login") {
+    document.getElementById("panicBtn").onclick = panicDelete;
   }
+}
+
+function toggleMode() {
+  mode = mode === "login" ? "register" : "login";
+  clearError();
+  renderForm();
 }
 
 function clearError() {
-  const err = document.getElementById("errorMsg");
-  if (err) {
-    err.textContent = "";
+  document.getElementById("errorMsg").textContent = "";
+}
+
+function handleSubmit() {
+  clearError();
+
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value;
+
+  if (!username || !password) {
+    showError("Please enter both username and password.");
+    return;
+  }
+
+  if (mode === "register") {
+    if (localStorage.getItem("userData")) {
+      showError("An account already exists. Please login.");
+      return;
+    }
+    // Save user data to localStorage
+    const userData = { username, password };
+    localStorage.setItem("userData", JSON.stringify(userData));
+    alert("Registration successful! Please login now.");
+    mode = "login";
+    renderForm();
+  } else {
+    // Login mode
+    const stored = localStorage.getItem("userData");
+    if (!stored) {
+      showError("No account found. Please register.");
+      return;
+    }
+
+    const { username: storedUser, password: storedPass } = JSON.parse(stored);
+
+    if (username === storedUser && password === storedPass) {
+      // Login successful
+      localStorage.setItem("loggedIn", "true");
+      showMainContent();
+    } else {
+      showError("Invalid username or password.");
+    }
   }
 }
 
-window.onload = () => {
-  const user = localStorage.getItem("username");
-  const pass = localStorage.getItem("password");
+function showError(msg) {
+  document.getElementById("errorMsg").textContent = msg;
+}
 
-  if (user && pass) {
-    showLoginForm();
-  } else {
-    createRegisterForm();
+function panicDelete() {
+  if (confirm("Are you sure you want to delete your account? This cannot be undone.")) {
+    localStorage.removeItem("userData");
+    localStorage.removeItem("loggedIn");
+    alert("Account deleted. You can now register a new one.");
+    mode = "register";
+    renderForm();
   }
+}
 
-  mainContent.style.display = "none";
-};
+function showMainContent() {
+  authDiv.style.display = "none";
+  mainContent.style.display = "block";
+}
+
+function checkLogin() {
+  if (localStorage.getItem("loggedIn") === "true") {
+    showMainContent();
+  } else {
+    renderForm();
+  }
+}
+
+checkLogin();
