@@ -1,88 +1,63 @@
 const authDiv = document.getElementById("auth");
 const mainContent = document.getElementById("mainContent");
 
-// Keys for localStorage
-const STORAGE_USER = "mySiteUser";
-const STORAGE_PASS = "mySitePass";
-
-// Utility: show main page
-function showMainPage() {
-  authDiv.style.display = "none";
-  mainContent.style.display = "block";
-}
-
-// Utility: show form (register or login)
-function showForm(isRegister) {
-  authDiv.innerHTML = ""; // clear
-
-  const formTitle = isRegister ? "Register" : "Login";
-  const btnText = isRegister ? "Register" : "Login";
-
-  const form = document.createElement("form");
-  form.innerHTML = `
-    <h2>${formTitle}</h2>
-
-    <label for="username">Username:</label>
-    <input type="text" id="username" autocomplete="off" required />
-
-    <label for="password">Password:</label>
-    <input type="password" id="password" autocomplete="off" required />
-
-    <button type="submit">${btnText}</button>
-    <p id="errorMsg"></p>
+function createAuthForm() {
+  authDiv.innerHTML = `
+    <h2>Register</h2>
+    <p>Create your account (default user: <strong>user</strong>, password: <strong>1111</strong>)</p>
+    <button id="registerBtn">Register</button>
   `;
 
-  form.addEventListener("submit", function(e) {
-    e.preventDefault();
-    const username = form.querySelector("#username").value.trim();
-    const password = form.querySelector("#password").value.trim();
-
-    const errorMsg = form.querySelector("#errorMsg");
-
-    if (isRegister) {
-      // Save credentials
-      localStorage.setItem(STORAGE_USER, username);
-      localStorage.setItem(STORAGE_PASS, password);
-      alert("Registration successful! Please login.");
-      showForm(false); // show login after register
-    } else {
-      // Login logic:
-      const storedUser = localStorage.getItem(STORAGE_USER);
-      const storedPass = localStorage.getItem(STORAGE_PASS);
-
-      if (!storedUser || !storedPass) {
-        // Should not happen, fallback to register
-        alert("No registered user found, please register first.");
-        showForm(true);
-        return;
-      }
-
-      if (username !== storedUser && password !== storedPass) {
-        errorMsg.textContent = "Wrong password and user";
-      } else if (username === storedUser && password !== storedPass) {
-        errorMsg.textContent = "Password incorrect";
-      } else if (username !== storedUser && password === storedPass) {
-        errorMsg.textContent = "Wrong login";
-      } else {
-        // Successful login
-        showMainPage();
-      }
-    }
-  });
-
-  authDiv.appendChild(form);
+  document.getElementById("registerBtn").onclick = () => {
+    // Save default credentials
+    localStorage.setItem("username", "user");
+    localStorage.setItem("password", "1111");
+    showLoginForm();
+  };
 }
 
-// On page load, decide what to show
-window.addEventListener("DOMContentLoaded", () => {
-  const registeredUser = localStorage.getItem(STORAGE_USER);
-  const registeredPass = localStorage.getItem(STORAGE_PASS);
+function showLoginForm() {
+  authDiv.innerHTML = `
+    <h2>Login</h2>
+    <input type="text" id="loginUser" placeholder="Username" autocomplete="off" />
+    <input type="password" id="loginPass" placeholder="Password" autocomplete="off" />
+    <div id="errorMsg"></div>
+    <button id="loginBtn">Login</button>
+    <button id="panicBtn" style="margin-top:10px; background:#ff4d4d; color:white;">Panic Account Delete</button>
+  `;
 
-  if (!registeredUser || !registeredPass) {
-    // Not registered yet
-    showForm(true);
+  document.getElementById("loginBtn").onclick = () => {
+    const user = document.getElementById("loginUser").value.trim();
+    const pass = document.getElementById("loginPass").value;
+
+    const savedUser = localStorage.getItem("username");
+    const savedPass = localStorage.getItem("password");
+
+    if (user === savedUser && pass === savedPass) {
+      authDiv.style.display = "none";
+      mainContent.style.display = "block";
+    } else {
+      document.getElementById("errorMsg").textContent = "Invalid username or password.";
+    }
+  };
+
+  document.getElementById("panicBtn").onclick = () => {
+    localStorage.removeItem("username");
+    localStorage.removeItem("password");
+    // Return to register form
+    createAuthForm();
+  };
+}
+
+// On page load:
+window.onload = () => {
+  const user = localStorage.getItem("username");
+  const pass = localStorage.getItem("password");
+
+  if (user && pass) {
+    showLoginForm();
   } else {
-    // Registered, show login
-    showForm(false);
+    createAuthForm();
   }
-});
+  mainContent.style.display = "none";
+};
