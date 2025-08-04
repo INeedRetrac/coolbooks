@@ -85,7 +85,6 @@ function clearError() {
   }
 }
 
-// On page load, check if user is registered
 window.onload = () => {
   const user = localStorage.getItem("username");
   const pass = localStorage.getItem("password");
