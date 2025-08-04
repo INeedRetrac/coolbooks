@@ -7,49 +7,64 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>Cool Inject</h1>
-    <p>Fast, Safe, Sleek. Inject with style.</p>
-  </header>
+  <!-- LOCK SCREEN -->
+  <div id="lockScreen">
+    <div class="lock-box">
+      <h2>Access Required</h2>
+      <p>Type the access code to continue:</p>
+      <div id="captchaWord">uK#8rX!zP1wL$7dQ</div>
+      <input type="text" id="captchaInput" placeholder="Enter the code" />
+      <button id="captchaBtn">Enter</button>
+      <p id="captchaStatus"></p>
+    </div>
+  </div>
 
-  <section id="about">
-    <h2>About</h2>
-    <p>This injector was built by a bad hvher who uses cracks but sometimes also real cheats. The cracks he has used are: primordial crack, and fatality crack. he has tried the gamesense crack wich his pc did not like and could not inject sadly.. and the real cheats he has used are: neverlose and havoc he also gives away sometimes cfg's or leaks them. But he has never cracked a cheat himself because he has 0 cracking knowledge and will never be able to crack because no one gives them cheat accounts so he might be able to crack it</p>
-  </section>
+  <!-- MAIN SITE -->
+  <div id="mainSite" style="display: none;">
+    <header>
+      <h1>Cool Inject</h1>
+      <p>Fast, Safe, Sleek. Inject with style.</p>
+    </header>
 
-  <section id="safety">
-    <h2>Is It Safe?</h2>
-    <p>Yes. The injector uses manual map injection, doesn't touch VAC-protected modules directly, and is built with clean C++ code.</p>
-  </section>
+    <section id="about">
+      <h2>About</h2>
+      <p>This injector was built by a bad hvher who uses cracks but sometimes also real cheats. The cracks he has used are: primordial crack, and fatality crack. he has tried the gamesense crack wich his pc did not like and could not inject sadly.. and the real cheats he has used are: neverlose and havoc he also gives away sometimes cfg's or leaks them. But he has never cracked a cheat himself because he has 0 cracking knowledge and will never be able to crack because no one gives them cheat accounts so he might be able to crack it</p>
+    </section>
+
+    <section id="safety">
+      <h2>Is It Safe?</h2>
+      <p>Yes. The injector uses manual map injection, doesn't touch VAC-protected modules directly, and is built with clean C++ code.</p>
+    </section>
 
     <section id="Virus Check">
-    <h2>Does This Injector Have Viruses?</h2>
-    <p>No, It Does Not. This Injector Was Made For People Who Need A Safe Injector For Cheats. And The Creator Has Been Hacked Once And Did Not Want Other People Get Hacked Too.</p>
-  </section>
+      <h2>Does This Injector Have Viruses?</h2>
+      <p>No, It Does Not. This Injector Was Made For People Who Need A Safe Injector For Cheats. And The Creator Has Been Hacked Once And Did Not Want Other People Get Hacked Too.</p>
+    </section>
 
-  <section id="faq">
-    <h2>FAQ</h2>
-    <p><strong>Q: Will this get me banned?</strong><br>A: No injector is 100% safe. Ours is undetected at the moment, but using cheats always carries a risk.</p>
-    <p><strong>Q: How do I use it?</strong><br>A: Run the loader.exe as admin, rename the cheat dll to csgo.dll and the steam module dll to steam.dll. put both in the same folder as the loader.exe if your cheat doesnt have steam module do the same without steam module.</p>
-    <p><strong>Q: Can You Get Hacked By Using This?</strong><br>A: Yes. only if you use malicous dll's the injector self doesnt have any viruses.</p>
-  </section>
-  
-      <section id="Injector">
-    <h2>I Like This Injector It Works Fine!</h2>
-    <p>Thank You For Liking It, The Creator Did Its Best For It To Work! Join The Discord For Extra Support!</p>
-  </section>
+    <section id="faq">
+      <h2>FAQ</h2>
+      <p><strong>Q: Will this get me banned?</strong><br>A: No injector is 100% safe. Ours is undetected at the moment, but using cheats always carries a risk.</p>
+      <p><strong>Q: How do I use it?</strong><br>A: Run the loader.exe as admin, rename the cheat dll to csgo.dll and the steam module dll to steam.dll. put both in the same folder as the loader.exe if your cheat doesnt have steam module do the same without steam module.</p>
+      <p><strong>Q: Can You Get Hacked By Using This?</strong><br>A: Yes. only if you use malicous dll's the injector self doesnt have any viruses.</p>
+    </section>
 
-  <section class="discord">
-    <h2>Contact Me</h2>
-    <p>Join the Discord server: <a href="https://www.discord.gg/xGxRWssHTG" target="_blank">Server</a></p>
-    <p>Or message me directly: <strong>@i.am_toogood4u</strong></p>
-  </section>
+    <section id="Injector">
+      <h2>I Like This Injector It Works Fine!</h2>
+      <p>Thank You For Liking It, The Creator Did Its Best For It To Work! Join The Discord For Extra Support!</p>
+    </section>
 
-  <section class="download-section">
-    <h2>Download</h2>
-    <button id="downloadBtn">Download Injector</button>
-    <p id="statusMsg"></p>
-  </section>
+    <section class="discord">
+      <h2>Contact Me</h2>
+      <p>Join the Discord server: <a href="https://www.discord.gg/xGxRWssHTG" target="_blank">Server</a></p>
+      <p>Or message me directly: <strong>@i.am_toogood4u</strong></p>
+    </section>
+
+    <section class="download-section">
+      <h2>Download</h2>
+      <button id="downloadBtn">Download Injector</button>
+      <p id="statusMsg"></p>
+    </section>
+  </div>
 
   <script src="script.js"></script>
 </body>
