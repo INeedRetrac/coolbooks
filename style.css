@@ -1,8 +1,10 @@
+/* Body black background and text */
 body {
-  background-color: black;
   margin: 0;
-  padding: 0;
+  background-color: #000000;
+  color: #00ffd5;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  user-select: none;
 }
 
 /* Auth form container */
@@ -10,16 +12,14 @@ body {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.85);
+  width: 340px;
   padding: 2rem 3rem;
+  background: #111111;
   border-radius: 15px;
   box-shadow: 0 0 20px #00ffd5aa;
-  width: 320px;
   color: #00ffd5;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transform: translate(-50%, -50%);
   text-align: center;
-  user-select: none;
 }
 
 /* Form Title */
@@ -49,7 +49,7 @@ body {
   box-shadow: 0 0 8px #00ffd5;
 }
 
-/* Submit button */
+/* Buttons */
 #auth button {
   background: #00ffd5;
   border: none;
@@ -62,15 +62,25 @@ body {
   width: 100%;
   box-shadow: 0 0 15px #00ffd5;
   transition: background 0.3s ease;
+  margin-bottom: 0.8rem;
 }
 
-/* Button hover */
 #auth button:hover {
   background: #00fff2;
   box-shadow:
     0 0 15px #00fff2,
     0 0 25px #00fff2,
     0 0 45px #00fff2;
+}
+
+/* Links inside form */
+#auth .form-switch {
+  color: #00ffd5cc;
+  cursor: pointer;
+  user-select: text;
+  margin-top: 1rem;
+  display: inline-block;
+  text-decoration: underline;
 }
 
 /* Error message styling */
@@ -81,12 +91,35 @@ body {
   min-height: 1.2rem;
 }
 
-/* Remove underline from labels and block style */
-#auth label {
-  display: block;
-  text-align: left;
-  font-weight: 600;
-  margin-bottom: 0.3rem;
-  color: #00ffd5cc;
+/* Panic button styling */
+#panicBtn {
+  background: #ff4444;
+  margin-top: 0.5rem;
+}
+
+#panicBtn:hover {
+  background: #ff6666;
+}
+
+/* Main content styling */
+#mainContent {
+  max-width: 720px;
+  margin: 3rem auto;
+  padding: 0 1rem;
   user-select: text;
+}
+
+#mainContent header h1 {
+  font-size: 2.8rem;
+  margin-bottom: 0;
+}
+
+#mainContent section {
+  margin-top: 2rem;
+}
+
+#mainContent section h2 {
+  color: #00ffd5;
+  border-bottom: 1px solid #00ffd5;
+  padding-bottom: 0.2rem;
 }
